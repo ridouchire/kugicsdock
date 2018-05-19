@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  web_nginx:
+    image: 'bitnami/nginx:$NGINX_VER'
+    restart: always
+    depends_on:
+      - latest_php
+
+    ports:
+      - '80:3000'
+
+    volumes:
+      - ./etc/nginx:/bitnami/nginx/conf/vhosts
+
+  latest_php:
+    image: 'bitnami/php-fpm:$PHP_VER'
+    restart: always
+
+    ports:
+      - '9000:9000'
+    
+    volumes:
+      - ./etc/php/custom.ini:/opt/bitnami/php/etc/conf.d/custom.ini
+      - ./app:/app
+
+  mysqldb:
+    image: mysql:${MYSQL_VERSION}
+    container_name: ${MYSQL_HOST}
+    restart: always
+
+    env_file:
+      - ".env"
+
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./etc/db:/var/lib/mysql"
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "3030:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=${MYSQL_HOST}
+    restart: always
+    depends_on:
+      - mysqldb
