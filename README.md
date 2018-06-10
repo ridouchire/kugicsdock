@@ -37,6 +37,6 @@ cp -r ${PATH}/${PROJECT_NAME} app/${PROJECT_NAME}.local
 - `make logs`: show me the money
 - `make halt`: gracefully shutdown compose
 
-Special thanx for:
+## Special thanx for:
 - https://github.com/mdjward/docker-generic
 - https://bitbucket.org/torunar/pepyakabox/src/master/
