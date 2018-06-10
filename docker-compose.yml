@@ -14,14 +14,16 @@ services:
       - ./etc/nginx:/bitnami/nginx/conf/vhosts
 
   latest_php:
-    image: 'bitnami/php-fpm:$PHP_VER'
+    image: 'mdjw866/php-fpm-xdebug'
     restart: always
 
     ports:
       - '9000:9000'
+
+    env_file:
+      - ".env"
     
     volumes:
-      - ./etc/php/custom.ini:/opt/bitnami/php/etc/conf.d/custom.ini
       - ./app:/app
 
   mysqldb:
