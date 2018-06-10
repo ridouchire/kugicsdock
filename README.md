@@ -17,10 +17,11 @@ rm etc/nginx/vhost.conf
 # Remove dummy config
 ```
 
-- Copy your project dir to app dir 
+- Copy your project dir to `app` dir 
 ```
-cp ${PATH}/${PROJECT_NAME} app/${PROJECT_NAME}.local
+cp -r ${PATH}/${PROJECT_NAME} app/${PROJECT_NAME}.local
 # NOTE: PROJECT_NAME.local will be DOMAIN.local
+# Just dummy command :)
 ```
 
 - Register project dir
