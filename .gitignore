@@ -1,2 +1,11 @@
 etc/db/*
 ^etc/db/.gitkeep
+
+var/log/nginx/*
+^var/log/nginx/.gitkeep
+
+ssl/*
+^ssl/.gitkeep
+
+etc/nginx/*
+^etc/nginx/vhost.conf

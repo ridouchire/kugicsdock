@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 
 services:
   web_nginx:
@@ -9,12 +9,19 @@ services:
 
     ports:
       - '80:3000'
+      - '443:4430'
 
     volumes:
       - ./etc/nginx:/bitnami/nginx/conf/vhosts
+      - ./ssl:/bitnami/nginx/conf/bitnami/certs
+      - ./var/log/nginx:/var/log/nginx/
 
   latest_php:
-    image: 'mdjw866/php-fpm-xdebug'
+    build:
+      context: ./xdebug-image
+      cache_from:
+        - mdjw866/php-fpm:latest
+    image: 'custom-xdebug-image'
     restart: always
 
     ports:
@@ -25,6 +32,7 @@ services:
     
     volumes:
       - ./app:/app
+      - ./etc/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
 
   mysqldb:
     image: mysql:${MYSQL_VERSION}
