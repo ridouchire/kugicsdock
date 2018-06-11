@@ -9,3 +9,7 @@ ssl/*
 
 etc/nginx/*
 !etc/nginx/vhost.conf
+
+app/*
+!app/.gitkeep
+!app/index.php
