@@ -1,5 +1,5 @@
 goto:
-	docker exec -it docker_latest_php_1 bash
+	docker exec -it kugicsdock_php_1 bash
 
 build:
 	docker-compose build
