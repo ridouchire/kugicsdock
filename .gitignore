@@ -4,6 +4,9 @@ etc/db/*
 var/log/nginx/*
 !var/log/nginx/.gitkeep
 
+var/log/mail/*
+!var/log/mail/.gitkeep
+
 ssl/*
 !ssl/.gitkeep
 

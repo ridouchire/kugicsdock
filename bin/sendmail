@@ -1,0 +1,8 @@
+#!/usr/local/bin/php
+<?php
+	$mail_path = '/maillog/';
+	//@mkdir($mail_path);
+	$input = file_get_contents('php://stdin');
+	$name = microtime() . '.eml';
+	file_put_contents($mail_path . $name, $input);
+	exit();

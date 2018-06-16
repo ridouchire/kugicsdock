@@ -1,7 +1,7 @@
 FROM library/php:7.0-fpm
 LABEL MAINTANER kugimiya <bp.001@yandex.ru>
 
-RUN apt update -yyq && apt install -yyq mysql-client xz-utils
+RUN apt update -yyq && apt install -yyq mysql-client xz-utils zip
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
